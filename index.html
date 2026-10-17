@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08030d">
+<title>Berks PlayStation | Oyun Yazılması</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --violet:#c86bff;
+ --violet2:#7d31d4;
+ --bg:#050208;
+ --line:rgba(220,171,255,.16);
+ --muted:#b5a6be;
+}
+html,body{min-height:100%;width:100%}
+body{
+ font-family:Inter,"Segoe UI",system-ui,sans-serif;
+ color:#fff;
+ background:#050208 url('rhm-erny-bg.png') center/cover fixed no-repeat;
+ display:grid;place-items:center;
+ padding:20px;
+}
+body:before{
+ content:"";position:fixed;inset:0;
+ background:linear-gradient(90deg,rgba(3,1,7,.94),rgba(6,2,11,.72),rgba(3,1,7,.94)),
+ linear-gradient(180deg,rgba(4,1,8,.3),rgba(4,1,8,.9));
+ pointer-events:none;
+}
+.shell{
+ position:relative;width:min(760px,100%);
+ border:1px solid var(--line);border-radius:24px;
+ background:rgba(8,4,14,.88);
+ box-shadow:0 40px 120px #000b,0 0 70px #963ae11f;
+ overflow:hidden;backdrop-filter:blur(18px);
+ animation:enter .65s ease both;
+}
+.card{padding:30px 32px 24px}
+.brand{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:12px;padding-bottom:20px;margin-bottom:25px;
+ border-bottom:1px solid #ffffff12;
+}
+.brand-left{display:flex;align-items:center;gap:12px}
+.logo{
+ width:46px;height:46px;flex-shrink:0;display:grid;
+ place-items:center;border-radius:13px;
+ background:linear-gradient(145deg,#d58aff,#7728d2);
+ font-size:23px;color:#17051e;
+ box-shadow:0 8px 25px #b447ff38;
+}
+.brand h1{font-size:19px;letter-spacing:.07em}
+.brand small{
+ display:block;margin-top:5px;color:#a68bb5;
+ font:800 9px Consolas,monospace;letter-spacing:.12em;
+}
+.live{
+ font:800 9px Consolas,monospace;color:#bfffdc;
+ border:1px solid #78ffc82b;background:#64ffb00a;
+ padding:8px 11px;border-radius:999px;white-space:nowrap;
+}
+.live i{
+ display:inline-block;width:7px;height:7px;border-radius:50%;
+ background:#9dffcc;box-shadow:0 0 10px #9dffcc;margin-right:6px;
+}
+.contact{
+ display:flex;align-items:center;justify-content:center;
+ gap:10px;padding:13px 15px;margin-bottom:25px;
+ border:1px solid #25d36650;border-radius:12px;
+ background:#25d3660c;text-decoration:none;color:white;
+ transition:.2s;
+}
+.contact:hover{background:#25d36619;transform:translateY(-2px)}
+.contact svg{width:25px;height:25px;fill:#25d366;flex-shrink:0}
+.contact strong{font-size:14px}
+.contact small{display:block;color:#b8aabe;font-size:10px;margin-top:3px}
+.head{margin-bottom:22px}
+.eyebrow{
+ font:800 9px Consolas,monospace;letter-spacing:.2em;
+ color:#c77aff;margin-bottom:10px;
+}
+.head h2{font-size:clamp(24px,5vw,32px);letter-spacing:-.04em;margin-bottom:9px}
+.head p{font-size:13px;color:var(--muted);line-height:1.7}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.service{
+ text-align:center;padding:17px 8px 15px;
+ border:1px solid var(--line);border-radius:14px;
+ background:linear-gradient(145deg,#ffffff09,#ffffff02);
+ transition:.2s;
+}
+.service:hover{border-color:#c86bff70;transform:translateY(-3px)}
+.service .icon{font-size:27px;margin-bottom:9px}
+.service h3{font-size:15px;color:#e7c6ff;letter-spacing:.06em}
+.service p{font-size:10px;color:#a99bb2;margin-top:6px;line-height:1.5}
+.status{
+ padding:17px;border:1px solid var(--line);
+ border-radius:14px;background:#ffffff06;
+}
+.status-row{display:flex;justify-content:space-between;gap:10px;margin-bottom:10px}
+.status-label,.status-value{
+ font:800 9px Consolas,monospace;letter-spacing:.08em;
+}
+.status-label{color:#b7a8c0}
+.status-value{color:#d08aff}
+.track{height:7px;border-radius:99px;background:#170d1e;overflow:hidden}
+.bar{
+ height:100%;width:0;
+ background:linear-gradient(90deg,#7927cf,#be60ff,#e39cff);
+ box-shadow:0 0 16px #c862ff8c;transition:width .16s;
+}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}
+.step{
+ font:800 9px Consolas,monospace;color:#817389;
+ border:1px solid #ffffff0f;border-radius:8px;
+ padding:9px 4px;text-align:center;
+}
+.step.active,.step.done{
+ color:#ead4f8;border-color:#d280ff38;background:#b851ff10;
+}
+.footer{
+ display:flex;justify-content:space-between;gap:10px;
+ margin-top:18px;color:#8b7a96;
+ font:700 9px Consolas,monospace;letter-spacing:.05em;
+}
+.corner{color:#c58ce5;text-align:right}
+@keyframes enter{
+ from{opacity:0;transform:translateY(14px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:520px){
+ body{padding:12px}
+ .card{padding:22px 17px 19px}
+ .brand h1{font-size:16px}
+ .brand small{font-size:8px;letter-spacing:.06em}
+ .live{font-size:8px;padding:7px}
+ .services{gap:7px}
+ .service{padding:14px 4px}
+ .service .icon{font-size:24px}
+ .service h3{font-size:13px}
+ .service p{font-size:9px}
+ .contact strong{font-size:13px}
+ .footer{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<main class="shell">
+<section class="card">
+
+ <header class="brand">
+  <div class="brand-left">
+   <div class="logo">♛</div>
+   <div>
+    <h1>BERKS PLAYSTATION</h1>
+    <small>PLAYSTATION OYUN XİDMƏTİ</small>
+   </div>
+  </div>
+  <div class="live"><i></i>ONLAYN</div>
+ </header>
+
+ <a class="contact"
+ href="https://wa.me/994997407939"
+ target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 32 32" aria-label="WhatsApp">
+   <path d="M16 .8A15.1 15.1 0 0 0 3.05 23.68L1 31l7.5-1.97A15.2 15.2 0 1 0 16 .8Zm0 27.7a12.5 12.5 0 0 1-6.38-1.75l-.46-.28-4.45 1.17 1.19-4.34-.3-.47A12.55 12.55 0 1 1 16 28.5Zm6.9-9.4c-.38-.19-2.2-1.08-2.54-1.2-.34-.13-.59-.19-.83.19-.25.37-.95 1.2-1.16 1.44-.22.25-.43.28-.8.1-.38-.19-1.6-.59-3.04-1.88-1.12-1-1.88-2.23-2.1-2.6-.22-.38-.02-.58.16-.76.17-.16.38-.43.56-.65.19-.22.25-.38.38-.63.12-.25.06-.47-.03-.65-.1-.19-.83-2-.1-2.37-.26-.37-.52-.4-.83-.4h-.71c-.25 0-.65.09-.99.46-.34.38-1.3 1.27-1.3 3.08s1.33 3.57 1.52 3.82c.19.25 2.61 3.99 6.33 5.6.89.39 1.58.62 2.12.79.89.28 1.7.24 2.34.14.72-.11 2.2-.9 2.51-1.77.31-.88.31-1.63.22-1.78-.1-.16-.34-.25-.72-.44Z"/>
+  </svg>
+  <div>
+   <strong>WhatsApp: 099 740 79 39</strong>
+   <small>Oyun yazılması üçün bizimlə əlaqə saxla</small>
+  </div>
+ </a>
+
+ <div class="head">
+  <div class="eyebrow">BERKS PLAYSTATION // XOŞ GƏLMİSİNİZ</div>
+  <h2>Oyun yazılması xidməti</h2>
+  <p>PS3, PS4 və PS5 üçün oyun xidmətləri haqqında məlumat almaq üçün aşağıdakı bölmələrə bax.</p>
+ </div>
+
+ <div class="services">
+  <div class="service">
+   <div class="icon">🎮</div>
+   <h3>PS3</h3>
+   <p>PlayStation 3<br>Oyun xidməti</p>
+  </div>
+  <div class="service">
+   <div class="icon">🕹️</div>
+   <h3>PS4</h3>
+   <p>PlayStation 4<br>Oyun xidməti</p>
+  </div>
+  <div class="service">
+   <div class="icon">🎯</div>
+   <h3>PS5</h3>
+   <p>PlayStation 5<br>Oyun xidməti</p>
+  </div>
+ </div>
+
+ <div class="status">
+  <div class="status-row">
+   <span class="status-label" id="status">SƏHİFƏ HAZIRLANIR</span>
+   <span class="status-value" id="pct">0%</span>
+  </div>
+  <div class="track"><div class="bar" id="bar"></div></div>
+  <div class="steps">
+   <div class="step active" id="s1">HAZIRLIQ</div>
+   <div class="step" id="s2">YOXLAMA</div>
+   <div class="step" id="s3">HAZIRDIR</div>
+  </div>
+ </div>
+
+ <footer class="footer">
+  <span>BERKS PLAYSTATION</span>
+  <span class="corner" id="footerStatus">YÜKLƏNİR...</span>
+ </footer>
+
+</section>
+</main>
+
+<script>
+(function(){
+  const bar=document.getElementById('bar');
+  const pct=document.getElementById('pct');
+  const status=document.getElementById('status');
+  const footerStatus=document.getElementById('footerStatus');
+  const steps=[
+    document.getElementById('s1'),
+    document.getElementById('s2'),
+    document.getElementById('s3')
+  ];
+
+  let progress=0;
+
+  const timer=setInterval(function(){
+    progress=Math.min(100,progress+Math.floor(Math.random()*8)+4);
+
+    bar.style.width=progress+'%';
+    pct.textContent=progress+'%';
+
+    if(progress>=35){
+      status.textContent='İŞ MÜHİTİ YOXLANIR';
+      steps[0].className='step done';
+      steps[1].className='step active';
+    }
+
+    if(progress>=70){
+      status.textContent='SƏHİFƏ YÜKLƏNİR';
+      steps[1].className='step done';
+      steps[2].className='step active';
+    }
+
+    if(progress>=100){
+      clearInterval(timer);
+
+      status.textContent='SESSION READY';
+      footerStatus.textContent='SESSION READY';
+
+      pct.textContent='100%';
+      bar.style.width='100%';
+
+      steps[0].className='step done';
+      steps[1].className='step done';
+      steps[2].className='step done';
+
+      setTimeout(function(){
+        location.href='jb.html';
+      },450);
+    }
+  },120);
+})();
+</script>
+
+</body>
+</html>

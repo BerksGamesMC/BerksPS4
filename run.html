@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Berks PlayStation | PS4 13.52</title>
+<style>
+html,body{margin:0;width:100%;min-height:100%;background:#050507;color:#eee;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body{display:flex;align-items:center;justify-content:center;padding:18px 0;box-sizing:border-box}
+.card{width:min(900px,92vw);background:#0d0d11;border:1px solid #ff6600;border-radius:14px;padding:28px;box-shadow:0 0 35px #ff660044;box-sizing:border-box}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.brand{font-weight:900;letter-spacing:2px;color:#ff6600}
+.fw{font-family:monospace;color:#aaa}
+.contact{display:inline-flex;align-items:center;gap:7px;color:#56e39f;text-decoration:none;font-weight:800;font-size:13px}
+.contact svg{width:19px;height:19px;fill:currentColor}
+.services{font-size:12px;color:#aaa;margin:-6px 0 18px;letter-spacing:.4px}
+.badge{display:inline-block;border:1px solid #555;border-radius:999px;padding:6px 10px;font:12px monospace;color:#aaa}
+#state{font-size:20px;font-weight:800;margin:18px 0 8px}.bar{height:10px;background:#222;border-radius:99px;overflow:hidden}.fill{height:100%;width:3%;background:#ff6600;box-shadow:0 0 15px #ff6600;transition:width .15s}
+#pct{font:12px monospace;color:#aaa;margin-top:7px}
+pre{height:340px;overflow:auto;background:#050507;border:1px solid #222;border-radius:8px;padding:14px;white-space:pre-wrap;word-break:break-word;font:12px Consolas,monospace;color:#bbb;box-sizing:border-box}
+.ok{color:#56e39f}.bad{color:#ff5277}.warn{color:#ffd166}.actions{display:none;gap:10px;margin-top:15px}button{border:0;border-radius:7px;padding:12px 16px;background:#ff6600;font-weight:800;cursor:pointer}
+.small{margin-top:10px;color:#666;font:11px monospace}
+@media(max-width:520px){.card{padding:18px}.brand{font-size:14px}.fw{font-size:11px}#state{font-size:17px}pre{height:280px}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="brand">★ BERKS PLAYSTATION</div>
+    <div class="fw">PS4 FIRMWARE 13.52</div>
+    <a class="contact" href="https://wa.me/994997407939" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ilə əlaqə">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .14 5.36.14 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.25-1.64a11.9 11.9 0 0 0 5.82 1.48h.01c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.5-8.42ZM12.08 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.71.97.99-3.62-.24-.37a9.86 9.86 0 0 1-1.52-5.25c0-5.45 4.44-9.89 9.9-9.89a9.82 9.82 0 0 1 7 2.9 9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.89-9.9 9.89Zm5.43-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
+      WhatsApp: 099 740 79 39
+    </a>
+  </div>
+  <div class="services">PS3 • PS4 • PS5 OYUN YAZILMASI</div>
+  <div id="badge" class="badge">HAZIRLANIR</div>
+  <div id="state">WebKit modulu başladılır…</div>
+  <div class="bar"><div id="fill" class="fill"></div></div>
+  <div id="pct">03%</div>
+  <pre id="out"></pre>
+  <div class="actions" id="actions"><button onclick="location.reload()">YENİDƏN YOXLAMA</button></div>
+  <div class="small">Yekun status göstərilənə qədər bu səhifəni açıq saxlayın.</div>
+</div>
+<script>
+(function(){
+  const badge=document.getElementById('badge'), state=document.getElementById('state'), fill=document.getElementById('fill'), pct=document.getElementById('pct'), out=document.getElementById('out'), actions=document.getElementById('actions');
+  function append(s,cls){ const line=document.createElement('div'); line.textContent='['+new Date().toLocaleTimeString()+'] '+s; if(cls)line.className=cls; out.appendChild(line); out.scrollTop=out.scrollHeight; }
+  window.reportExploitProgress=function(stage,name,percent,detail){
+    const p=Math.max(0,Math.min(100,Number(percent)||0));
+    badge.textContent='[MƏRHƏLƏ '+stage+'/6] '+name;
+    state.textContent=name;
+    fill.style.width=p+'%'; pct.textContent=String(Math.round(p)).padStart(2,'0')+'%';
+    if(detail) append('[GEDİŞAT] '+detail,'');
+  };
+  window.onZoofComplete=function(status){
+    if(status && status.success){
+      badge.textContent='[TAMAMLANDI] PAYLOAD AKTİVDİR'; badge.className='badge ok'; state.textContent='GoldHEN / payload aktiv olduğu bildirildi'; fill.style.width='100%'; pct.textContent='100%'; append('UĞURLU: kernel patch və payload tamamlandı bildirildi.','ok');
+    } else { badge.textContent='[UĞURSUZ]'; badge.className='badge bad'; state.textContent='Exploit uğurun tamamlandığını bildirmədi'; actions.style.display='flex'; append('XƏTA: completed='+!!(status&&status.completed)+' kpatched='+!!(status&&status.kpatched)+' payloadRunning='+!!(status&&status.payloadRunning),'bad'); }
+  };
+  window.showExploitError=function(msg){ badge.textContent='[XƏTA]'; badge.className='badge bad'; state.textContent='Exploit xətası — yenidən başlatmaq və ya təkrar yoxlamaq lazım ola bilər'; actions.style.display='flex'; append('XƏTA: '+(msg||'naməlum'),'bad'); };
+  window.addEventListener('error',function(e){append('JS XƏTASI: '+(e.message||e.error||'naməlum'),'bad');});
+  append('Berks PlayStation RUN səhifəsi yükləndi. Hədəf PS4 13.52-dir.','ok');
+  append('jb.js / core.js / yaddaş / offsets yüklənməsi gözlənilir…');
+})();
+</script>
+<script type="module">
+(async function () {
+  try {
+    await import("./jb.js?fw=1352");
+  } catch (e) {
+    if (typeof window.showExploitError === "function")
+      window.showExploitError(e && e.message ? e.message : String(e));
+  }
+})();
+</script>
+</body>
+</html>
